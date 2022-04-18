@@ -1,0 +1,21 @@
+from django.db import models
+from django.db.models import Model
+
+
+class User(models.Model):
+    name = models.CharField(max_length=255)
+    mail = models.EmailField()
+    password = models.CharField(max_length=255)
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    author_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_published = models.BooleanField(default=False)
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    likes_count = models.IntegerField(default=0)
+    dislikes_count = models.IntegerField(default=0)
