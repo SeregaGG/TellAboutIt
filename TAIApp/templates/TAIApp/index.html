@@ -1,0 +1,14 @@
+{% extends 'TAIApp/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<ul>
+    {% for article in articles %}
+    <li>
+        <h2>{{article.title}}</h2>
+        <p>{{article.content}}</p>
+        <hr>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
