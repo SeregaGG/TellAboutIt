@@ -2,12 +2,12 @@
 
 {% block content %}
 <h1>{{title}}</h1>
-<ul>
+<ul class="list-articles">
     {% for article in articles %}
     <li>
         <h2>{{article.title}}</h2>
-        <p>{{article.content}}</p>
-        <hr>
+        <p>{{article.content|truncatewords:2}}</p>
+        <p class="link-read-post"><a href="#">Read article</a></p>
     </li>
     {% endfor %}
 </ul>
