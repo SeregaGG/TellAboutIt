@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Model
+from django.urls import reverse
 
 
 class User(models.Model):
@@ -19,3 +20,6 @@ class Article(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     likes_count = models.IntegerField(default=0)
     dislikes_count = models.IntegerField(default=0)
+
+    def get_absolute_url(self):
+        return reverse('show_article', kwargs={'article_id': self.pk})
