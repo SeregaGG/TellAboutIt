@@ -5,9 +5,12 @@
 <ul class="list-articles">
     {% for article in articles %}
     <li>
+        <div class="article-panel">
+            <p class="first">Author name: {{article.author_id}}</p>
+            <p class="last">Last update: {{article.updated_at|date:"d-m-Y H:i:s"}}</p>
+        </div>
         <h2>{{article.title}}</h2>
         <p>{{article.content|truncatewords:2}}</p>
-        <p>Author name: {{article.author_id}}</p>
         <p class="link-read-post"><a href="{{article.get_absolute_url}}">Read article</a></p>
     </li>
     {% endfor %}

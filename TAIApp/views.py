@@ -9,12 +9,10 @@ menu = [{'title': 'About site', 'url': 'about'},
 
 def home_page(request):
     articles = Article.objects.all()
-    users = User.objects.all()
     context = {
         'title': 'Home page',
         'menu': menu,
-        'articles': articles,
-        'users': users
+        'articles': articles
     }
     return render(request, 'TAIApp/index.html', context)
 
