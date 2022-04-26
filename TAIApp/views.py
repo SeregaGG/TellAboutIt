@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 
@@ -20,7 +20,10 @@ def about(request):
 
 
 def create_article(request):
-    return HttpResponse('create_article')
+    context = {
+        'title': 'Create article'
+    }
+    return render(request, 'TAIApp/create_article.html', context)
 
 
 def sign_in(request):
@@ -28,4 +31,8 @@ def sign_in(request):
 
 
 def show_article(request, article_id):
-    return HttpResponse(f'show_article {article_id}')
+    article = get_object_or_404(Article, pk=article_id)
+    context = {
+        'article': article
+    }
+    return render(request, 'TAIApp/article.html', context)

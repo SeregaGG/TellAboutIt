@@ -14,7 +14,7 @@
         <p><img class="img-article-left thumb" src="{{article.photo.url}}"></p>
         {% endif %}
         <h2>{{article.title}}</h2>
-        <p>{{article.content|truncatewords:2}}</p>
+        <p>{{article.content|truncatewords:20}}</p>
         <p class="link-read-post"><a href="{{article.get_absolute_url}}">Read article</a></p>
     </li>
     {% endif %}
