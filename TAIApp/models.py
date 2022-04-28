@@ -32,3 +32,6 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('show_article', kwargs={'article_id': self.pk})
+
+    class Meta:
+        ordering = ['-updated_at']

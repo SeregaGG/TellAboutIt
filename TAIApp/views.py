@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 
 def home_page(request):
@@ -20,8 +21,17 @@ def about(request):
 
 
 def create_article(request):
+    form = ArticleForm()
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
     context = {
-        'title': 'Create article'
+        'title': 'Create article',
+        'form': form
     }
     return render(request, 'TAIApp/create_article.html', context)
 
