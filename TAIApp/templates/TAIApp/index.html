@@ -4,7 +4,6 @@
 <h1>{{title}}</h1>
 <ul class="list-articles">
     {% for article in articles %}
-    {% if article.is_published%}
     <li>
         <div class="article-panel">
             <p class="first">Author name: {{article.author_id}}</p>
@@ -17,7 +16,6 @@
         <p>{{article.content|truncatewords:20}}</p>
         <p class="link-read-post"><a href="{{article.get_absolute_url}}">Read article</a></p>
     </li>
-    {% endif %}
     {% endfor %}
 </ul>
 {% endblock content %}
